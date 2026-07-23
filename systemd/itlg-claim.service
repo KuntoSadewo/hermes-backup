@@ -1,0 +1,16 @@
+[Unit]
+Description=ITLG Auto Claim Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/itlg-claim
+ExecStart=/home/ubuntu/itlg-claim/venv/bin/python bot_v2_2.py
+Restart=always
+RestartSec=30
+StandardOutput=append:/home/ubuntu/itlg-claim/bot.log
+StandardError=append:/home/ubuntu/itlg-claim/bot.log
+
+[Install]
+WantedBy=multi-user.target

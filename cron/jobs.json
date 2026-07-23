@@ -1,0 +1,98 @@
+{
+  "jobs": [
+    {
+      "id": "2dbccdf7920d",
+      "name": "btc-price-monitor",
+      "prompt": "You are a BTC market analyst. Gather comprehensive Bitcoin news and price data from MULTIPLE sources. Report in Indonesian (Bahasa Indonesia).\n\n## Step 1: Price Data\nRun this in terminal:\n```bash\ncurl -s \"https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false\" | python3 -c \"\nimport json,sys\nd=json.load(sys.stdin)\nm=d.get('market_data',{})\nprint(f\\\"Harga: \\${m.get('current_price',{}).get('usd'):,.0f}\\\")\nprint(f\\\"24h: {m.get('price_change_percentage_24h',0):+.2f}%\\\")\nprint(f\\\"7d: {m.get('price_change_percentage_7d',0):+.2f}%\\\")\nprint(f\\\"30d: {m.get('price_change_percentage_30d',0):+.2f}%\\\")\nprint(f\\\"24h Range: \\${m.get('low_24h',{}).get('usd'):,.0f} - \\${m.get('high_24h',{}).get('usd'):,.0f}\\\")\nprint(f\\\"ATH: \\${m.get('ath',{}).get('usd'):,.0f} ({m.get('ath_change_percentage',{}).get('usd',0):+.1f}%)\\\")\nprint(f\\\"Market Cap: \\${m.get('market_cap',{}).get('usd',0)/1e9:.1f}B\\\")\nprint(f\\\"Vol 24h: \\${m.get('total_volume',{}).get('usd',0)/1e9:.1f}B\\\")\n\"\n```\n\n## Step 2: News from Multiple Sources\nSearch the web for latest BTC news using these queries:\n- \"Bitcoin news today\"\n- \"BTC price analysis\"\n- \"Bitcoin ETF inflows outflows\"\n- \"Bitcoin whale movement\"\n- \"crypto regulation news\"\n\nUse web_search for each query (limit=3 per query).\n\n## Step 3: Market Sentiment\nCheck Fear & Greed Index:\n```bash\ncurl -s \"https://api.alternative.me/fng/?limit=1\" | python3 -c \"\nimport json,sys\nd=json.load(sys.stdin)['data'][0]\nprint(f\\\"Fear & Greed: {d['value']} ({d['value_classification']})\\\")\n\"\n```\n\n## Step 4: Compile Report\nFormat the report like this (in Indonesian):\n\n```\n\ud83d\udcca BTC Market Report\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udcb0 Harga: $XX,XXX\n\ud83d\udcc8 24h: +X.XX% | 7d: +X.XX% | 30d: +X.XX%\n\ud83d\udcca 24h Range: $low - $high\n\ud83d\udc8e ATH: $XX,XXX (XX% dari ATH)\n\ud83c\udfe6 Market Cap: $XXX B\n\ud83d\udcb9 Volume 24h: $XX B\n\ud83d\ude31 Fear & Greed: XX (Label)\n\n\ud83d\udcf0 NEWS TERKINI (5-8 headline terpenting):\n1. [headline] \u2014 [sumber]\n2. [headline] \u2014 [sumber]\n...\n\n\ud83d\udc0b Whale & ETF:\n- [info tentang ETF inflows/outflows kalau ada]\n- [info whale movement kalau ada]\n\n\u2696\ufe0f Regulasi:\n- [info regulasi terbaru kalau ada]\n\n\ud83d\udd2e Signal: BULLISH/BEARISH/MIXED\n[alasan singkat 2-3 kalimat]\n```\n\nKeep it concise. Indonesian language. No lengthy disclaimers. Focus on actionable info.",
+      "skills": [
+        "finance-research-trading"
+      ],
+      "skill": "finance-research-trading",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 120,
+        "display": "every 120m"
+      },
+      "schedule_display": "every 120m",
+      "repeat": {
+        "times": null,
+        "completed": 86
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-07-11T15:11:04.780024+07:00",
+      "paused_reason": null,
+      "created_at": "2026-07-04T10:56:21.039713+07:00",
+      "next_run_at": "2026-07-11T17:09:33.560988+07:00",
+      "last_run_at": "2026-07-11T15:09:33.560988+07:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: Error code: 402 - {'error': {'code': '402', 'message': 'Insufficient account balance', 'type': 'insufficient_balance'}}",
+      "last_delivery_error": null,
+      "deliver": "telegram:480316338",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "480316338",
+        "chat_name": "Ardhisadewo",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal",
+        "web"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "3a9aef7dff14",
+      "name": "hermes-daily-backup",
+      "prompt": "Backup Hermes ke GitHub. Jalankan script: bash /home/ubuntu/backup-to-github.sh dan pastikan berhasil. Kalau gagal, retry sekali. Report hasilnya (jumlah files, commit hash, sukses/gagal). Format singkat, bahasa Indonesia.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 14
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-07-09T12:55:31.911957+07:00",
+      "next_run_at": "2026-07-24T03:00:00+07:00",
+      "last_run_at": "2026-07-23T03:00:58.362022+07:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: Error code: 402 - {'error': {'code': '402', 'message': 'Insufficient account balance', 'type': 'insufficient_balance'}}",
+      "last_delivery_error": null,
+      "deliver": "telegram:480316338",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "480316338",
+        "chat_name": "Ardhisadewo",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
+    }
+  ],
+  "updated_at": "2026-07-23T03:00:58.362473+07:00"
+}

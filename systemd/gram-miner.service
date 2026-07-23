@@ -1,0 +1,16 @@
+[Unit]
+Description=Gram Network Miner Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/gram-network-vps
+ExecStart=/home/ubuntu/.local/bin/node /home/ubuntu/gram-network-vps/grammine.js loop
+Restart=always
+RestartSec=30
+Environment=NODE_ENV=production
+Environment=PATH=/home/ubuntu/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target

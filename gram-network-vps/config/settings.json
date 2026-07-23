@@ -1,0 +1,14 @@
+{
+  "intervalMinutes": 15,
+  "jitterSeconds": 30,
+  "parallel": 1,
+  "delayBetweenAccountsMs": 2500,
+  "claimOnly": false,
+  "autoTaskOnFull": true,
+  "skipExternalTasks": false,
+  "skipJoinTasks": true,
+  "skipTaskTypes": [],
+  "taskCooldownHours": 0,
+  "dailyCooldownHours": 24,
+  "chainAfterClaim": true
+}
